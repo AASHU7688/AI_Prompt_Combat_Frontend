@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Ensuring Full Page Centering */
+    .competition-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+        text-align: center;
+    }
+
+    /* Main Competition Container */
+    .competition-container {
+        background: rgba(20, 20, 20, 0.9);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        width: 80%;
+        max-width: 700px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .competition-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+    }
+
+    /* Title Styling */
+    .competition-container h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #00FFFF;
+        margin-bottom: 10px;
+    }
+
+    .competition-container p {
+        font-size: 1.2rem;
+        color: #00EEEE;
+        margin-bottom: 20px;
+    }
+
+    /* Round Box Container */
+    .round-box-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* Round Box Styling */
+    .round-box {
+        background: rgba(0, 255, 255, 0.2);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+        width: 45%;
+        max-width: 300px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        text-align: center;
+    }
+
+    .round-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 255, 255, 0.4);
+    }
+
+    .round-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #00FFFF;
+        margin-bottom: 10px;
+    }
+
+    .round-box p {
+        font-size: 1rem;
+        color: #00EEEE;
+    }
+
+    /* Button Styling */
+    .round-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #0F2027;
+        background: #00FFFF;
+        border-radius: 8px;
+        transition: 0.3s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 255, 255, 0.4);
+    }
+
+    .round-button:hover {
+        background: #00EEEE;
+        box-shadow: 0 0 10px #00FFFF;
+        transform: scale(1.05);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .competition-container {
+            width: 90%;
+            padding: 30px;
+        }
+
+        .round-box-container {
+            flex-direction: column;
+        }
+
+        .round-box {
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .round-title {
+            font-size: 1.5rem;
+        }
+
+        .round-button {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .competition-container {
+            width: 95%;
+            padding: 20px;
+        }
+
+        .round-title {
+            font-size: 1.4rem;
+        }
+
+        .round-button {
+            font-size: 1rem;
+            padding: 8px 14px;
+        }
+    }
+</style>
+
+<div class="competition-wrapper">
+    <div class="competition-container">
+        <h1>AI Prompt Combat - Competition</h1>
+        <p>Get ready to test your AI prompting skills in an intense battle of creativity!</p>
+
+        <div class="round-box-container">
+            <div class="round-box" id="round1" onclick="location.href='{% url 'level1' %}'">
+                <div class="round-title">Round 1</div>
+                <p>Click below to start Round 1.</p>
+                <a href="{% url 'level1' %}" class="round-button">Go to Level 1</a>
+            </div>
+
+            <div class="round-box" id="round2" onclick="location.href='{% url 'level2' %}'">
+                <div class="round-title">Round 2</div>
+                <p>Click below to start Round 2.</p>
+                <a href="{% url 'level2' %}" class="round-button">Go to Level 2</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

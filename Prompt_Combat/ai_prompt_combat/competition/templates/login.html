@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card login-card">
+        <h2 class="login-title">Login</h2>
+
+        {% if messages %}
+        <div class="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="text-center submit-container">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+
+        <p class="text-center mt-3">Don't have an account? <a href="{% url 'signup' %}" class="text-highlight">Sign Up</a></p>
+    </div>
+</div>
+
+<style>
+/* General Styling */
+body {
+    background-color: #0D1117; /* Dark background */
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff; /* White text for readability */
+}
+
+/* Centering Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Card Styling */
+.login-card {
+    background: #161B22; /* Dark grey (matches homepage) */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 6px 12px rgba(0, 255, 136, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: fadeIn 0.8s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Centering Login Title */
+.login-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #00FFFF; /* Neon green */
+    margin-bottom: 20px;
+}
+
+/* Hover Effect */
+.login-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px #00FFFF;;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Group Styling */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.input-group label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #00FFFF;/* Neon green for labels */
+}
+.input-group input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #21262D; /* Darker input field */
+    color: #ffffff;
+    padding: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+}
+.input-group input:focus {
+    border-color:#00FFFF;
+    box-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+    outline: none;
+}
+
+/* Submit Button Styling */
+.submit-container {
+    text-align: center;
+    margin-top: 10px;
+}
+.btn-primary {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    background-color: #00FFFF;/* Neon green button */
+    border: none;
+    color: #0D1117;
+    box-shadow: 0 4px 10px#00FFFF;;
+    width: 100%;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #00FFFF;;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px #00FFFF;;
+}
+
+/* Alert Styling */
+.alert {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4444;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Link Styling */
+.text-highlight {
+    color: #00FFFF;; /* Neon green */
+    text-decoration: none;
+    font-weight: bold;
+}
+.text-highlight:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
